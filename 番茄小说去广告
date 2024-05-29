@@ -2,12 +2,11 @@
 #!desc = 移除番茄小说开屏广告、移除文章底部和章末广告、移除听书页面广告、移除悬浮部件和底栏多余的福利标签。
 #!openUrl = 
 #!author = 水墨整合版
-#!homepage = https://gitlab.com/lodepuly/vpn_tool/-/tree/master/Tool/Loon/Plugin
 #!icon = https://gitlab.com/lodepuly/iconlibrary/-/raw/main/App_icon/120px/DragonRead.png
 #!date = 2024-05-15 16:39:58
 
 [Rule]
-URL-REGEX, ^http:\/\/sf3-be-pack\.pglstatp-toutiao\.com\/obj\/ad-app-package\/, REJECT
+URL-REGEX, ^http:\/\/sf3-be-pack\.pglstatp-toutiao\.com\/obj\/ad-app-package\/,REJECT
 
 DOMAIN,p6-ad-sign.byteimg.com,REJECT
 DOMAIN,p9-ad-sign.byteimg.com,REJECT
