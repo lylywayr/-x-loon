@@ -3,7 +3,7 @@
 #!openUrl = 
 #!author = 水墨整合版
 #!icon = https://gitlab.com/lodepuly/iconlibrary/-/raw/main/App_icon/120px/DragonRead.png
-#!date = 2024-05-15 16:39:58
+#!date = 2024-05-29 16:58:58
 
 [Rule]
 URL-REGEX, ^http:\/\/sf3-be-pack\.pglstatp-toutiao\.com\/obj\/ad-app-package\/,REJECT
