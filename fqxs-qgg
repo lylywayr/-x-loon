@@ -52,7 +52,7 @@ DOMAIN, lf-sourcecdn-tos.bytegecko.com, DIRECT
 ^https?:\/\/.+\.snssdk.com\/api\/ad\/.+ - reject
 ^http:\/\/.+\.byteimg\.com\/ad-app-package - reject
 ^http:\/\/.+\.byteimg\.com\/web\.business\.image - reject
-# .+web\.business\.image url reject
+.+web\.business\.image - reject
 ^https?:\/\/.+\.(pglstatp-toutiao|pstatp)\.com\/(ad-app-package|ad)\/.+ - reject
 ^https?:\/\/adim\.pinduoduo\.com\/.+\/toutiao\?.+ - reject
 ^https?:\/\/.+novelapp\.fqnovelvod\.com\/.+\/video\/.+ - reject
