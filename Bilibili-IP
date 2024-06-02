@@ -2,7 +2,7 @@
 #!desc = 移除番茄小说开屏广告、移除文章底部和章末广告、移除听书页面广告、移除悬浮部件和底栏多余的福利标签。
 #!openUrl = 
 #!author = 水墨整合版
-#!icon = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/TikTok_1.png
+#!icon = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/bilibili_4.png
 #!date = 2024-06-02 12:12:12
 
 [Rule]
