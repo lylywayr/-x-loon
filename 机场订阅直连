@@ -1,14 +1,14 @@
 # 一元
-DOMAIN,sub1.smallstrawberry.com
+HOST-SUFFIX, sub1.smallstrawberry, DIRECT 
 
 
 # hy-2
-DOMAIN,hy-2.sbs
+HOST-SUFFIX, hy-2.sbs, DIRECT
 
 
 # 快游戏
-DOMAIN,sub1.qingze-quick.top
+HOST-SUFFIX, sub1.qingze-quick.top, DIRECT
 
 
 # 国际机场
-DOMAIN,gawrgura.moe
+HOST-SUFFIX, gawrgura.moe, DIRECT
