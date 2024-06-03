@@ -1,10 +1,12 @@
-DOMAIN-SUFFIX,smallstrawberry.com # 一元
+# 一元
+DOMAIN-SUFFIX,smallstrawberry.com
 
 
-DOMAIN-SUFFIX,hy-2.sbs # hy-2
+# hy-2
+DOMAIN-SUFFIX,hy-2.sbs
 
+# 快游戏
+DOMAIN-SUFFIX,qingze-quick.top
 
-DOMAIN-SUFFIX,qingze-quick.top # 快游戏
-
-
-DOMAIN-SUFFIX,gawrgura.moe # 快游戏
+# 国际机场
+DOMAIN-SUFFIX,gawrgura.moe
