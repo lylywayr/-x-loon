@@ -1,0 +1,14 @@
+#!name= 抖快书评论区定位
+#!desc= 抖音，快手，小红书评论区IP地址定位
+#!author= lylywayr
+#!icon= https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/Loon.png
+
+[rule]
+# 小红书修改IP
+DOMAIN,edith.xiaohongshu.com, PROXY
+# 快手修改IP
+DOMAIN,apissl.ksapisrv.com, PROXY
+DOMAIN-SUFFIX,gifshow.com, PROXY
+# 抖音修改IP
+DOMAIN-SUFFIX,douyinvod.com, PROXY
+DOMAIN-SUFFIX,amemv.com, PROXY
