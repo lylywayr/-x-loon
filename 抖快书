@@ -1,0 +1,14 @@
+#!name= 流媒体定位
+#!desc= 抖音，快手，小红书评论区IP地址定位
+#!author= lylywayr
+#!icon= https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/Loon.png
+
+[rule]
+# 小红书修改IP
+DOMAIN,edith.xiaohongshu.com, DIRECT
+# 快手修改IP
+DOMAIN,apissl.ksapisrv.com, DIRECT
+DOMAIN-SUFFIX,gifshow.com, DIRECT
+# 抖音修改IP
+DOMAIN-SUFFIX,douyinvod.com, DIRECT
+DOMAIN-SUFFIX,amemv.com, DIRECT
