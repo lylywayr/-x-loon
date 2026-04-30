@@ -1,0 +1,14 @@
+# TongCheng.yaml (Egern 模块文件)
+scriptings:
+  - http_request:
+      name: "同程旅行-抓取Token"
+      match: "^https:\/\/app\.17u\.cn\/welfarecenter\/index\/signIndex"
+      script_url: "https://raw.githubusercontent.com/lylywayr/-x-loon/refs/heads/main/tongchenglvzing.js"
+      timeout: 20
+      body_required: false
+
+  - schedule:
+      name: "同程旅行-签到"
+      cron: "5 12 * * *"
+      script_url: "https://raw.githubusercontent.com/lylywayr/-x-loon/refs/heads/main/tongchenglvzing.js"
+      timeout: 300
