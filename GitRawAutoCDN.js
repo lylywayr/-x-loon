@@ -1,8 +1,8 @@
 /*
  * GitRawAutoCDN.js for Surge
- * GitHub Raw 可选反代版
+ * v20260716-2
+ * GitHub Raw 可选反代版，单参数 CDN。
  *
- * 模块参数：
  * CDN = OFF   不反代，直接放行
  * CDN = JSD   cdn.jsdelivr.net
  * CDN = JSD-F fastly.jsdelivr.net
@@ -11,8 +11,7 @@
  * CDN = GHP2  gh-proxy.com
  * CDN = GM    hub.gitmirror.com
  * CDN = LLKK  gh.llkk.cc
- * CDN = CUS   自定义，配合 URL 使用
- * URL = 自定义反代模板，支持 {url}、{url_encoded}、{user}、{repo}、{branch}、{path}、{path_encoded}
+ * CDN = https://example.com/{url}  自定义反代
  */
 (function () {
   'use strict';
@@ -60,6 +59,21 @@
     }
 
     return result;
+  }
+
+  function getCdnArgument(arg) {
+    var raw = String(arg || '').trim();
+    if (!raw || isPlaceholder(raw)) return '';
+
+    var args = parseArguments(raw);
+    var value = args.CDN || args.cdn || args['反代'] || args.proxy || args.Proxy || '';
+
+    if (value) return value;
+
+    // 兼容直接传入 JSD / GHP / https://example.com/{url} 这种裸值。
+    if (raw.indexOf('=') < 0 && raw.indexOf('&') < 0) return safeDecode(raw);
+
+    return '';
   }
 
   function normalizeName(name) {
@@ -130,11 +144,12 @@
 
     if (result !== raw) return result;
 
+    // 没写占位符时，按“反代前缀 + 原始 Raw URL”处理。
     return raw.replace(/\/+$/, '') + '/' + info.rawUrl;
   }
 
-  function buildTarget(info, proxyName, customProxy) {
-    var n = normalizeName(proxyName);
+  function buildTarget(info, cdnArg) {
+    var n = normalizeName(cdnArg);
 
     if (shouldBypass(n)) return null;
 
@@ -166,14 +181,11 @@
       return wrap(info, 'gh.llkk.cc');
     }
 
-    if (n === 'cus' || n === 'custom' || n === '自定义') {
-      return buildCustom(info, customProxy);
+    if (/^https?:\/\//i.test(cdnArg)) {
+      return buildCustom(info, cdnArg);
     }
 
-    if (/^https?:\/\//i.test(proxyName)) {
-      return buildCustom(info, proxyName);
-    }
-
+    // 未识别时默认不反代，避免误跳坏链接。
     return null;
   }
 
@@ -186,33 +198,15 @@
       return done({});
     }
 
-    var args = parseArguments(typeof $argument === 'undefined' ? '' : $argument);
-
-    var proxyName =
-      args.CDN ||
-      args.cdn ||
-      args['反代'] ||
-      args.proxy ||
-      args.Proxy ||
-      '';
-
-    var customProxy =
-      args.URL ||
-      args.url ||
-      args['自定义反代'] ||
-      args.custom ||
-      args.Custom ||
-      args['自定义'] ||
-      '';
-
-    var target = buildTarget(info, proxyName, customProxy);
+    var cdnArg = getCdnArgument(typeof $argument === 'undefined' ? '' : $argument);
+    var target = buildTarget(info, cdnArg);
 
     if (!target) {
-      console.log('[GitRawAutoCDN] bypass: ' + requestUrl);
+      console.log('[GitRawAutoCDN] bypass: ' + requestUrl + ', CDN=' + (cdnArg || 'OFF'));
       return done({});
     }
 
-    console.log('[GitRawAutoCDN] ' + proxyName + ' -> ' + target);
+    console.log('[GitRawAutoCDN] CDN=' + cdnArg + ' -> ' + target);
 
     done({
       response: {
@@ -222,7 +216,7 @@
           'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
           Pragma: 'no-cache',
           Expires: '0',
-          'X-GitRawAutoCDN-CDN': String(proxyName || ''),
+          'X-GitRawAutoCDN-CDN': String(cdnArg || ''),
           'X-GitRawAutoCDN-Target': target
         },
         body: ''
