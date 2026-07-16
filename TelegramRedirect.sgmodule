@@ -7,7 +7,7 @@
 #!arguments-desc=跳转客户端:\n\n填写要跳转的 Telegram 客户端名称，大小写不敏感。\n\n内置值：\nTelegram\nSwiftgram\nTurrit\niMe\nNicegram\nLingogram\n\n高级自定义：\nxxx:native  → 使用 xxx://resolve / xxx://join 等 Telegram 兼容路径\nxxx:parseurl → 使用 xxx://parseurl?url=https%3A%2F%2Ft.me%2Fxxx\n\n如果内置第三方客户端无法打开，可以直接填写真实 URL Scheme，例如 nicegram:parseurl、ng:parseurl、swiftgram:parseurl、sg:parseurl。
 
 [Script]
-Telegram 跳转 = type=http-request, pattern=^https?:\/\/(?:t\.me|telegram\.me|telegram\.dog|[A-Za-z0-9_]{2,32}\.t\.me)(?:\/|\?|$).*, script-path=https://raw.githubusercontent.com/lylywayr/egern/refs/heads/main/TelegramRedirect.js?v=20260716-2, timeout=10, debug=true, argument=跳转客户端={{{跳转客户端}}}
+TelegramRedirect = type=http-request, pattern=^https?:\/\/(?:t\.me|telegram\.me|telegram\.dog|[A-Za-z0-9_]+\.t\.me)(?:[\/?#]|$).*, script-path=https://raw.githubusercontent.com/lylywayr/egern/refs/heads/main/TelegramRedirect.js, timeout=10, debug=true, argument=跳转客户端={{{跳转客户端}}}
 
 [MITM]
 hostname = %APPEND% t.me, telegram.me, telegram.dog, *.t.me
