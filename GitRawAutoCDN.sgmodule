@@ -2,13 +2,13 @@
 #!desc= GitHub Raw 可选反代；CDN=OFF 或不填时不反代
 #!author= lylywayr
 #!category= 增强
-#!version= 2.1.0
+#!version= 2.2.0
 #!date= 2026-07-16
-#!arguments=CDN:OFF,URL:
-#!arguments-desc=CDN 简写：\nOFF = 不反代\nJSD = cdn.jsdelivr.net\nJSD-F = fastly.jsdelivr.net\nJSD-G = gcore.jsdelivr.net\nGHP = ghproxy.net\nGHP2 = gh-proxy.com\nGM = hub.gitmirror.com\nLLKK = gh.llkk.cc\nCUS = 自定义\n\nURL：仅 CDN=CUS 时使用，支持 {url}、{url_encoded}、{user}、{repo}、{branch}、{path}、{path_encoded}。\n\n示例：\nCDN=OFF\nCDN=JSD\nCDN=GHP\nCDN=CUS，URL=https://example.com/{url}
+#!arguments=CDN:OFF
+#!arguments-desc=CDN 简写：\nOFF = 不反代\nJSD = cdn.jsdelivr.net\nJSD-F = fastly.jsdelivr.net\nJSD-G = gcore.jsdelivr.net\nGHP = ghproxy.net\nGHP2 = gh-proxy.com\nGM = hub.gitmirror.com\nLLKK = gh.llkk.cc\n\n自定义反代：直接把 URL 填到 CDN，例如：\nhttps://example.com/{url}\n\n自定义 URL 支持：\n{url}\n{url_encoded}\n{user}\n{repo}\n{branch}\n{path}\n{path_encoded}\n\n示例：\nCDN=OFF\nCDN=JSD\nCDN=GHP\nCDN=https://example.com/{url}
 
 [Script]
-GitHub Raw Auto CDN = type=http-request, pattern=^https?:\/\/raw\.githubusercontent\.com\/.+, script-path=https://raw.githubusercontent.com/lylywayr/egern/refs/heads/main/GitRawAutoCDN.js?v=20260716-1, timeout=5, debug=true, argument=CDN={{{CDN}}}&URL={{{URL}}}
+GitHub Raw Auto CDN = type=http-request, pattern=^https?:\/\/raw\.githubusercontent\.com\/.+, script-path=https://raw.githubusercontent.com/lylywayr/egern/refs/heads/main/GitRawAutoCDN.js?v=20260716-2, timeout=5, debug=true, argument=CDN={{{CDN}}}
 
 [MITM]
 hostname = %APPEND% raw.githubusercontent.com
