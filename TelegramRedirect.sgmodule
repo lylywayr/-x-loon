@@ -4,10 +4,10 @@
 #!category=增强
 #!icon=https://iili.io/KQX347S.png
 #!arguments=跳转客户端:Telegram
-#!arguments-desc=跳转客户端:\n\n填写要跳转的 Telegram 客户端名称，大小写不敏感。\n\n内置值：\nTelegram\nSwiftgram\nTurrit\niMe\nNicegram\nLingogram\n\n高级自定义：\nxxx:native  → 使用 xxx://resolve / xxx://join 等 Telegram 兼容路径\nxxx:parseurl → 使用 xxx://parseurl?url=https%3A%2F%2Ft.me%2Fxxx\n\n如果内置第三方客户端无法打开，可以直接填写真实 URL Scheme，例如 nicegram:parseurl、ng:parseurl、swiftgram:parseurl、sg:parseurl。
+#!arguments-desc=跳转客户端:\n\n填写要跳转的 Telegram 客户端名称，大小写不敏感。\n\n内置值：\nTelegram\nSwiftgram\nTurrit\niMe\nNicegram\nLingogram\n\n默认会使用 native deep link，尽量直接进入对应频道、群组、帖子或私聊。\n\n高级自定义：\nxxx:native  → 使用 xxx://resolve / xxx://join 等 Telegram 兼容路径\nxxx:parseurl → 使用 xxx://parseurl?url=https%3A%2F%2Ft.me%2Fxxx\n\n如果能打开客户端但不能进入对应页面，请优先尝试 xxx:native；如果完全打不开，再尝试 xxx:parseurl。
 
 [Script]
-TelegramRedirect = type=http-request, pattern=^https?:\/\/(?:t\.me|telegram\.me|telegram\.dog|[A-Za-z0-9_]+\.t\.me)(?:[\/?#]|$).*, script-path=https://raw.githubusercontent.com/lylywayr/egern/refs/heads/main/TelegramRedirect.js, timeout=10, debug=true, argument=跳转客户端={{{跳转客户端}}}
+TelegramRedirect = type=http-request, pattern=^https?:\/\/(?:t\.me|telegram\.me|telegram\.dog|[A-Za-z0-9_]+\.t\.me)(?:[\/?#]|$).*, script-path=https://raw.githubusercontent.com/lylywayr/egern/refs/heads/main/TelegramRedirect.js?v=20260716-3, timeout=10, debug=true, argument=跳转客户端={{{跳转客户端}}}
 
 [MITM]
 hostname = %APPEND% t.me, telegram.me, telegram.dog, *.t.me
