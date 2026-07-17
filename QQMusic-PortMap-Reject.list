@@ -1,0 +1,11 @@
+# NAME: QQMusic PortMap Reject
+# AUTHOR: lylywayr
+# UPDATED: 2026-07-17
+# DESC: 拦截 QQ 音乐疑似 Port Map / P2P 高频请求风暴
+# USAGE: RULE-SET,https://raw.githubusercontent.com/lylywayr/egern/refs/heads/main/QQMusic-PortMap-Reject.list,REJECT-DROP,pre-matching
+
+# > QQ 音乐疑似 Port Map 高频 IP
+IP-CIDR,39.76.205.147/32,no-resolve
+IP-CIDR,222.142.108.115/32,no-resolve
+IP-CIDR,115.55.18.224/32,no-resolve
+IP-CIDR,125.47.204.143/32,no-resolve
